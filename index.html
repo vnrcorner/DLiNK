@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>dLink Router | Custom Admin Panel By KS</title>
+        <link rel="shortcut icon" href="img/favicon.png">
+        <link rel="stylesheet" type="text/css" href="http://192.168.0.1/style.css">
+        <style>
+            section {clear: both;}
+            section.header {margin-left: 20px}
+            section.header h2 {font-size: 20px; color: #006666; text-shadow: 0px 0px 0px #999}
+            section.header h2 span {font-size: 30px; color: #202020;}
+            section.header img {height: 17px}
+            
+            section.body {width: 100%; }
+            .body .left {float: left; width: 50%; border-right: 1px solid #202020; padding: 5px 10px;}
+            .body .right {float: left; width: 46%; border-left: 1px solid #ededed; padding: 5px 10px;}
+            .body .right table input {border: none;}
+            .body .right table .odd input {background: #DFDFDF;}
+            .body .left .buttons {border: 3px solid #404040; border-radius: 10px; font-size: large; text-align: center}
+            .body .left .buttons a {display: inline-block; padding:10px 15px; border-right: 2px solid #808080; color: #0077b3; margin-left: -5px; text-decoration: none}
+            .body .left .buttons a:first-child {border-left: 2px solid #808080;}
+            .body .left .buttons a:hover {color: #000}
+            .body .left .buttons a:focus {background: #99cc00; color: white;}
+            .body .left .buttons a:active {color: #ff9900}
+            
+            section.footer {position: fixed; bottom: 5px; text-align: center; left: 20px; border-top: 1px solid #505050}
+        </style>
+    </head>
+    <body>
+        <section class="header">
+            <h2><img src="img/dlink-logo.png" alt="dLink Router" class="dlink-logo"> <span>|</span> Custom Admin Panel By <img src="img/KS-LOGO.png" alt="KS" class="ks-logo"></h2>
+        </section>
+        <section class="body">
+            <div class="left">
+                <div class="buttons">
+                    <a href="http://192.168.0.1/status.htm" target="i_frame">Status</a>
+                    <a href="http://192.168.0.1/macfilter.htm" target="i_frame">MAC Filter</a>
+                    <a href="http://192.168.0.1/ip6filter.htm" target="i_frame">IP Filter</a>
+                    <a href="http://192.168.0.1/urlfilter.htm" target="i_frame">URL Filter</a>
+                </div>
+                <iframe name="i_frame" src="http://192.168.0.1/status.htm" style=" width:100%; height:500px; border:none; margin:0; padding:0;">
+                    Your browser doesn't support iframes
+                </iframe>
+                
+            </div>
+            <div class="right">
+                
+                <table class="ltbl">
+                    <tbody><tr><th colspan="4" class="head">Client MAC Address List</th></tr>
+
+                        <tr>
+                            <th>SL</th>
+                            <th>Device Name</th>
+                            <th>MAC Address</th>
+                            <th>Click & Copy</th>
+                        </tr>
+                        
+                        <tr class="">
+                            <td>01</td>
+                            <td>Samsung TV</td>
+                            <td><input type="text" value="4C:C9:5E:7E:04:03" id="mac1"></td>
+                            <td><button onclick="myFunction1()">Copy</button></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>02</td>
+                            <td>Asus Laptop</td>
+                            <td><input type="text" value="F8:E4:E3:61:54:59" id="mac2"></td>
+                            <td><button onclick="myFunction2()">Copy</button></td>
+                        </tr>
+                        <tr class="">
+                            <td>03</td>
+                            <td>Oppo A3s</td>
+                            <td><input type="text" value="18:D7:17:7E:DA:51" id="mac3"></td>
+                            <td><button onclick="myFunction3()">Copy</button></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>04</td>
+                            <td>Realme Nazro 30</td>
+                            <td><input type="text" value="02:EF:D5:A5:5A:5C" id="mac4"></td>
+                            <td><button onclick="myFunction4()">Copy</button></td>
+                        </tr>
+                        <tr class="">
+                            <td>05</td>
+                            <td>Samsung Glaxy</td>
+                            <td><input type="text" value="E4:58:B8:07:62:17" id="mac5"></td>
+                            <td><button onclick="myFunction5()">Copy</button></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>06</td>
+                            <td>Redmi Y3s</td>
+                            <td><input type="text" value="A8:9C:ED:1A:A3:9F" id="mac6"></td>
+                            <td><button onclick="myFunction6()">Copy</button></td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+                
+                <iframe id="frame" src="http://192.168.0.1/dhcptbl.htm" style="border:none;" title="Iframe Example" width="100%" height="300px"></iframe>
+            </div>
+        </section>
+        <section class="footer"><h3>This Custom Admin Panel for DLink Router. And Its developed by Kamrul Sobuz</h3></section>
+        
+        <script>
+            function myFunction1() {
+              /* Get the text field */
+              var copyText = document.getElementById("mac1");
+
+              /* Select the text field */
+              copyText.select();
+              copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+               /* Copy the text inside the text field */
+              navigator.clipboard.writeText(copyText.value);
+            }
+
+
+            function myFunction2() {
+              var copyText = document.getElementById("mac2");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999);
+              navigator.clipboard.writeText(copyText.value);
+            }
+            function myFunction3() {
+              var copyText = document.getElementById("mac3");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999);
+              navigator.clipboard.writeText(copyText.value);
+            }
+            function myFunction4() {
+              var copyText = document.getElementById("mac4");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999);
+              navigator.clipboard.writeText(copyText.value);
+            }
+            function myFunction5() {
+              var copyText = document.getElementById("mac5");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999);
+              navigator.clipboard.writeText(copyText.value);
+            }
+            function myFunction6() {
+              var copyText = document.getElementById("mac6");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999);
+              navigator.clipboard.writeText(copyText.value);
+            }
+        </script>
+    </body>
+</html>
