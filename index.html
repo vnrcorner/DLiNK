@@ -2,9 +2,10 @@
 <html>
     <head>
         <title>dLink Router | Custom Admin Panel By KS</title>
-        <link rel="shortcut icon" href="img/favicon.png">
-        <link rel="stylesheet" type="text/css" href="http://192.168.0.1/style.css">
+        <link rel="shortcut icon" href="https://softstribe.com/app/uploads/icons/com-dlink-dlinkwifi-icon.jpg">
+        <link rel="stylesheet" type="text/css" href="http://172.17.59.23/style.css">
         <style>
+            body {width: 100%; margin: 0;}
             section {clear: both;}
             section.header {margin-left: 20px}
             section.header h2 {font-size: 20px; color: #006666; text-shadow: 0px 0px 0px #999}
@@ -12,8 +13,10 @@
             section.header img {height: 17px}
             
             section.body {width: 100%; }
+/*
             .body .left {float: left; width: 50%; border-right: 1px solid #202020; padding: 5px 10px;}
             .body .right {float: left; width: 46%; border-left: 1px solid #ededed; padding: 5px 10px;}
+*/
             .body .right table input {border: none;}
             .body .right table .odd input {background: #DFDFDF;}
             .body .left .buttons {border: 3px solid #404040; border-radius: 10px; font-size: large; text-align: center}
@@ -28,17 +31,18 @@
     </head>
     <body>
         <section class="header">
-            <h2><img src="img/dlink-logo.png" alt="dLink Router" class="dlink-logo"> <span>|</span> Custom Admin Panel By <img src="img/KS-LOGO.png" alt="KS" class="ks-logo"></h2>
+            <h2><img src="https://brands.home-assistant.io/_/dlink/logo.png" alt="dLink Router" class="dlink-logo"> <span>|</span> Custom Admin Panel By <img src="http://ksdesignbd.byethost12.com/wp-content/themes/KS-Theme/img/icon.png" alt="KS" class="ks-logo"></h2>
         </section>
         <section class="body">
             <div class="left">
                 <div class="buttons">
-                    <a href="http://192.168.0.1/status.htm" target="i_frame">Status</a>
-                    <a href="http://192.168.0.1/macfilter.htm" target="i_frame">MAC Filter</a>
-                    <a href="http://192.168.0.1/ip6filter.htm" target="i_frame">IP Filter</a>
-                    <a href="http://192.168.0.1/urlfilter.htm" target="i_frame">URL Filter</a>
+                    <a href="http://172.17.59.23/status.htm" target="i_frame">Status</a>
+                    <a href="http://172.17.59.23/macfilter.htm" target="i_frame">MAC Filter</a>
+                    <a href="http://172.17.59.23/ip6filter.htm" target="i_frame">IP Filter</a>
+                    <a href="http://172.17.59.23/urlfilter.htm" target="i_frame">URL Filter</a>
+                    <a href="http://172.17.59.23/logout_m.htm" target="i_frame">Log Out</a>
                 </div>
-                <iframe name="i_frame" src="http://192.168.0.1/status.htm" style=" width:100%; height:500px; border:none; margin:0; padding:0;">
+                <iframe name="i_frame" src="http://172.17.59.23/macfilter.htm" style=" width:100%; height:500px; border:none; margin:0; padding:0;">
                     Your browser doesn't support iframes
                 </iframe>
                 
@@ -95,7 +99,7 @@
                     </tbody>
                 </table>
                 
-                <iframe id="frame" src="http://192.168.0.1/dhcptbl.htm" style="border:none;" title="Iframe Example" width="100%" height="300px"></iframe>
+                <iframe id="frame" src="http://172.17.59.23/dhcptbl.htm" style="border:none;" title="Iframe Example" width="100%" height="300px"></iframe>
             </div>
         </section>
         <section class="footer"><h3>This Custom Admin Panel for DLink Router. And Its developed by Kamrul Sobuz</h3></section>
