@@ -1,110 +1,178 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>dLink Router | Custom Admin Panel By KS</title>
-        <link rel="shortcut icon" href="https://softstribe.com/app/uploads/icons/com-dlink-dlinkwifi-icon.jpg">
-        <link rel="stylesheet" type="text/css" href="http://172.17.59.23/style.css">
-        <style>
-            body {width: 100%; margin: 0;}
+<head>
+    <title>dLink Router | Custom Admin Panel By KS</title>
+    <link rel="shortcut icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
             section {clear: both;}
-            section.header {margin-left: 20px}
-            section.header h2 {font-size: 20px; color: #006666; text-shadow: 0px 0px 0px #999}
-            section.header h2 span {font-size: 30px; color: #202020;}
-            section.header img {height: 17px}
-            
-            section.body {width: 100%; }
-/*
-            .body .left {float: left; width: 50%; border-right: 1px solid #202020; padding: 5px 10px;}
-            .body .right {float: left; width: 46%; border-left: 1px solid #ededed; padding: 5px 10px;}
-*/
-            .body .right table input {border: none;}
-            .body .right table .odd input {background: #DFDFDF;}
-            .body .left .buttons {border: 3px solid #404040; border-radius: 10px; font-size: large; text-align: center}
-            .body .left .buttons a {display: inline-block; padding:10px 15px; border-right: 2px solid #808080; color: #0077b3; margin-left: -5px; text-decoration: none}
-            .body .left .buttons a:first-child {border-left: 2px solid #808080;}
-            .body .left .buttons a:hover {color: #000}
-            .body .left .buttons a:focus {background: #99cc00; color: white;}
-            .body .left .buttons a:active {color: #ff9900}
-            
-            section.footer {position: fixed; bottom: 5px; text-align: center; left: 20px; border-top: 1px solid #505050}
+            section.header {margin: 5px}
+            section.header div {font-size: 20px; color: #006666; text-shadow: 0px 0px 0px #999}
+            section.header div span {font-size: larger; font-weight:600; color: #404040;}
+            section.header img {height: 18px}
+
+            section.body {width: 100%; margin: 0;}
+
+            .body .modal table input {border: none; width:130px;}
+            .body .modal table .odd input {background: #DFDFDF;}
+
+            .body .sec1 .buttons {border: 3px solid #404040; border-radius: 10px; font-size: large; text-align: center; margin-bottom: 5px}
+            .body .sec1 .buttons a {display: inline-block; padding:10px 15px; border-right: 2px solid #808080; color: #0077b3; margin-left: -5px; text-decoration: none}
+
+            .body .sec1 .buttons a:nth-child(4),
+            .body .sec1 .buttons a:nth-child(5),
+            .body .sec1 .buttons a:nth-child(6) {border-top: 2px solid #808080;}
+            .body .sec1 .buttons a:nth-child(3) {border-right:0;}
+
+            .body .sec1 .buttons a:first-child {border-left: 0px;}
+            .body .sec1 .buttons a:last-child {border-right: 0px;}
+            .body .sec1 .buttons a:hover {color: #000}
+            .body .sec1 .buttons a:focus, .body .sec1 .buttons .active {background: #99cc00; color: white;}
+            .body .sec1 .buttons a:active {color: #ff9900}
+
+
+            table.ltbl th, table.ltbl td, table.ctbl th, table.ctbl td {border:1px solid #888888;padding:3px;}
+            table.ltbl th { font-weight:normal; text-align:center; background-color:#AAAAAA; }
+            table.ltbl th.head {font-weight:bold;text-align:left;background-color:#3E3F43;color:#FFFFFF;}
+            table.ltbl th.headb {font-weight:bold; text-align:left; background-color:#3E3F43; color:#FFFFFF; }
+            table.ltbl td { text-align:center; }
+            table.ltbl tr.odd { text-align:center; background-color:#DFDFDF; }
+
+
+            section.footer {position: fixed; bottom: 0px; text-align: center; left: 0px; border-top: 1px solid #505050; font-size: 19px; background: #888; width:100%;}
+            section.footer h3 { font-size: 15px; margin: 8px 5px; color: #f1f1f1;}
+            section.footer h3 a { color: #c6f777; text-decoration: none;}
+
+
+            .modal {
+              visibility: hidden;
+              opacity: 0;
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: rgba(77, 77, 77, .7);
+              transition: all .4s;
+            }
+
+            .modal:target {
+              visibility: visible;
+              opacity: 1;
+            }
+
+            .modal__content {
+              border-radius: 4px;
+              position: relative;
+              max-width: 90%;
+              background: #fff;
+              padding: 1em 2em;
+            }
+
+            .modal__close {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: #585858;
+              text-decoration: none;
+            }
         </style>
-    </head>
-    <body>
-        <section class="header">
-            <h2><img src="https://brands.home-assistant.io/_/dlink/logo.png" alt="dLink Router" class="dlink-logo"> <span>|</span> Custom Admin Panel By <img src="http://ksdesignbd.byethost12.com/wp-content/themes/KS-Theme/img/icon.png" alt="KS" class="ks-logo"></h2>
-        </section>
-        <section class="body">
-            <div class="left">
-                <div class="buttons">
-                    <a href="http://172.17.59.23/status.htm" target="i_frame">Status</a>
-                    <a href="http://172.17.59.23/macfilter.htm" target="i_frame">MAC Filter</a>
-                    <a href="http://172.17.59.23/ip6filter.htm" target="i_frame">IP Filter</a>
-                    <a href="http://172.17.59.23/urlfilter.htm" target="i_frame">URL Filter</a>
-                    <a href="http://172.17.59.23/logout_m.htm" target="i_frame">Log Out</a>
-                </div>
-                <iframe name="i_frame" src="http://172.17.59.23/macfilter.htm" style=" width:100%; height:500px; border:none; margin:0; padding:0;">
-                    Your browser doesn't support iframes
-                </iframe>
-                
-            </div>
-            <div class="right">
-                
+</head>
+<body>
+<section class="header">
+    <div><img src="https://logodownload.org/wp-content/uploads/2015/05/dlink-logo.png" alt="dLink Router" class="dlink-logo">
+        <br> Custom Admin Panel By <span>KS</span></div>
+</section>
+<section class="body">
+    <div class="sec1" id="myDIV">
+        <div class="buttons">
+            <a class="btn" href="http://172.17.6.135/status.htm" target="i_frame">Status</a>
+            <a class="btn active" href="http://172.17.6.135/macfilter.htm" target="i_frame">MAC Filter</a>
+            <a class="btn" href="http://172.17.6.135/logout_m.htm" target="i_frame">Log Out</a>
+            <a class="btn" href="http://172.17.6.135/dhcptbl.htm" target="i_frame">DHCP List</a>
+            <a class="btn" href="#demo-modal">All Clients</a>
+            <a class="btn" href="http://172.17.6.135/home_mobile.htm" target="i_frame">Advance</a>
+        </div>
+        <iframe name="i_frame" src="http://192.168.0.1/macfilter.htm" style=" width:100%; height:800px; border:none; margin:0; padding:0;">
+            Your browser doesn't support iframes
+        </iframe>
+
+        <div id="demo-modal" class="modal">
+            <div class="modal__content">
                 <table class="ltbl">
                     <tbody><tr><th colspan="4" class="head">Client MAC Address List</th></tr>
-
-                        <tr>
-                            <th>SL</th>
-                            <th>Device Name</th>
-                            <th>MAC Address</th>
-                            <th>Click & Copy</th>
-                        </tr>
-                        
-                        <tr class="">
-                            <td>01</td>
-                            <td>Samsung TV</td>
-                            <td><input type="text" value="4C:C9:5E:7E:04:03" id="mac1"></td>
-                            <td><button onclick="myFunction1()">Copy</button></td>
-                        </tr>
-                        <tr class="odd">
-                            <td>02</td>
-                            <td>Asus Laptop</td>
-                            <td><input type="text" value="F8:E4:E3:61:54:59" id="mac2"></td>
-                            <td><button onclick="myFunction2()">Copy</button></td>
-                        </tr>
-                        <tr class="">
-                            <td>03</td>
-                            <td>Oppo A3s</td>
-                            <td><input type="text" value="18:D7:17:7E:DA:51" id="mac3"></td>
-                            <td><button onclick="myFunction3()">Copy</button></td>
-                        </tr>
-                        <tr class="odd">
-                            <td>04</td>
-                            <td>Realme Nazro 30</td>
-                            <td><input type="text" value="02:EF:D5:A5:5A:5C" id="mac4"></td>
-                            <td><button onclick="myFunction4()">Copy</button></td>
-                        </tr>
-                        <tr class="">
-                            <td>05</td>
-                            <td>Samsung Glaxy</td>
-                            <td><input type="text" value="E4:58:B8:07:62:17" id="mac5"></td>
-                            <td><button onclick="myFunction5()">Copy</button></td>
-                        </tr>
-                        <tr class="odd">
-                            <td>06</td>
-                            <td>Redmi Y3s</td>
-                            <td><input type="text" value="A8:9C:ED:1A:A3:9F" id="mac6"></td>
-                            <td><button onclick="myFunction6()">Copy</button></td>
-                        </tr>
-    
+                    <tr>
+                        <th>SL</th>
+                        <th>Device Name</th>
+                        <th>MAC Address</th>
+                        <th>Click & Copy</th>
+                    </tr>
+                    <tr class="">
+                        <td>01</td>
+                        <td>Samsung TV</td>
+                        <td><input type="text" value="4C:C9:5E:7E:04:03" id="mac1"></td>
+                        <td><button onclick="myFunction1()">Copy</button></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>02</td>
+                        <td>Asus Laptop</td>
+                        <td><input type="text" value="F8:E4:E3:61:54:59" id="mac2"></td>
+                        <td><button onclick="myFunction2()">Copy</button></td>
+                    </tr>
+                    <tr class="">
+                        <td>03</td>
+                        <td>Oppo A3s</td>
+                        <td><input type="text" value="18:D7:17:7E:DA:51" id="mac3"></td>
+                        <td><button onclick="myFunction3()">Copy</button></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>04</td>
+                        <td>Realme Nazro 30</td>
+                        <td><input type="text" value="02:EF:D5:A5:5A:5C" id="mac4"></td>
+                        <td><button onclick="myFunction4()">Copy</button></td>
+                    </tr>
+                    <tr class="">
+                        <td>05</td>
+                        <td>Samsung Glaxy</td>
+                        <td><input type="text" value="E4:58:B8:07:62:17" id="mac5"></td>
+                        <td><button onclick="myFunction5()">Copy</button></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>06</td>
+                        <td>Redmi Y3s</td>
+                        <td><input type="text" value="A8:9C:ED:1A:A3:9F" id="mac6"></td>
+                        <td><button onclick="myFunction6()">Copy</button></td>
+                    </tr>
                     </tbody>
                 </table>
-                
-                <iframe id="frame" src="http://172.17.59.23/dhcptbl.htm" style="border:none;" title="Iframe Example" width="100%" height="300px"></iframe>
+                <a href="#" class="modal__close">&times;</a>
             </div>
-        </section>
-        <section class="footer"><h3>This Custom Admin Panel for DLink Router. And Its developed by Kamrul Sobuz</h3></section>
-        
-        <script>
+        </div>
+    </div>
+</section>
+<section class="footer"><h3>Developed by <a href="http://fb.com/ksobuz">Kamrul Sobuz</a></h3></section>
+
+<script>
+            // Get the container element
+var btnContainer = document.getElementById("myDIV");
+
+// Get all buttons with class="btn" inside the container
+var btns = btnContainer.getElementsByClassName("btn");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
+
             function myFunction1() {
               /* Get the text field */
               var copyText = document.getElementById("mac1");
@@ -116,7 +184,6 @@
                /* Copy the text inside the text field */
               navigator.clipboard.writeText(copyText.value);
             }
-
 
             function myFunction2() {
               var copyText = document.getElementById("mac2");
@@ -149,5 +216,5 @@
               navigator.clipboard.writeText(copyText.value);
             }
         </script>
-    </body>
+</body>
 </html>
