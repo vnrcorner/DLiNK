@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .macFL {
+          background: #e7e7e7;
+          border: 2px solid #aaa;
+          border-radius: 50px;
+          margin: 10px auto;
+          padding: 7px 20px 12px;
+          width: fit-content;
+      }
+      .macFL p {
+          font-size: 40px;
+          font-weight: 600;
+          text-align: center;
+          margin: 10px;
+          font-family: fantasy;
+          border-bottom: 5px solid #505050;
+          color: #202020;
+      }
+      .macFL form {
+          display: inline-block;
+      }
+      .macFL form .button {
+          display: inline-block;
+          border: 8px inset #000;
+          background: #888;
+          border-radius: 100px;
+          width: 120px;
+          height: 120px;
+          font-size: 40px;
+          font-weight: 600;
+          box-shadow: 10px 10px 5px 0px #555;
+          transition: 0.2s ease;
+      }
+      .macFL form .button.on {
+          background: #4CAF50;
+          border-color: #95d097;
+          color: #dcefdc;
+      }
+      .macFL form .button.off {
+          background: #f44336;
+          border-color: #f98e86;
+          color: #fee8e7;
+          margin-right: 5px;
+      }
+
+      .macFL form .button.on:hover {}
+      .macFL form .button:hover,
+      .macFL form .button:focus,
+      .macFL form .button:active {
+          box-shadow: 0px 0px 1px 1px #555;
+          border-width: 3px;
+          cursor: pointer;
+      }
+      .macFL form input {display: none;}
+  </style>
+ </head>
+  <body>
+    <div class="macFL">
+        <p>INTERNET</p>
+
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd" id="myForm">
+            <label class="switch">
+                <input type="checkbox" name="enabled" value="ON" onclick="updateState()" checked="">
+                <span class="slider round"></span>
+            </label>
+
+            <input type="submit" class="button off" value="OFF" name="addFilterMac" id="submit">
+            <input type="hidden" value="http://192.168.0.1/macfilter.htm" name="submit-url">
+        </form>
+
+
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd" onsubmit="return addClick();">
+            <label class="switch">
+                <input type="checkbox" name="enabled" value="ON" onclick="updateState()">
+                <span class="slider round"></span>
+            </label>
+            <input type="submit" class="button on" value="ON" name="addFilterMac" onclick="">
+            <input type="hidden" value="http://192.168.0.1/macfilter.htm" name="submit-url">
+        </form>
+    </div>
+
+    <iframe name="i_frame" src="http://192.168.0.1/macfilter_m.htm" style=" width:100%; height:120px; border:none; margin:0; padding:0;" scrolling="no">
+        Your browser doesn't support iframes
+    </iframe>
+  </body>
+</html>
