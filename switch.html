@@ -1,85 +1,255 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      .macFL {
-          background: #e7e7e7;
-          border: 2px solid #aaa;
-          border-radius: 50px;
-          margin: 10px auto;
-          padding: 7px 20px 12px;
-          width: fit-content;
-      }
-      .macFL p {
-          font-size: 40px;
-          font-weight: 600;
-          text-align: center;
-          margin: 10px;
-          font-family: fantasy;
-          border-bottom: 5px solid #505050;
-          color: #202020;
-      }
-      .macFL form {
-          display: inline-block;
-      }
-      .macFL form .button {
-          display: inline-block;
-          border: 8px inset #000;
-          background: #888;
-          border-radius: 100px;
-          width: 120px;
-          height: 120px;
-          font-size: 40px;
-          font-weight: 600;
-          box-shadow: 10px 10px 5px 0px #555;
-          transition: 0.2s ease;
-      }
-      .macFL form .button.on {
-          background: #4CAF50;
-          border-color: #95d097;
-          color: #dcefdc;
-      }
-      .macFL form .button.off {
-          background: #f44336;
-          border-color: #f98e86;
-          color: #fee8e7;
-          margin-right: 5px;
-      }
+<style>
+    .hidden {
+        display: none;
+    }
 
-      .macFL form .button.on:hover {}
-      .macFL form .button:hover,
-      .macFL form .button:focus,
-      .macFL form .button:active {
-          box-shadow: 0px 0px 1px 1px #555;
-          border-width: 3px;
-          cursor: pointer;
-      }
-      .macFL form input {display: none;}
-  </style>
- </head>
-  <body>
-    <div class="macFL">
-        <p>INTERNET</p>
+    .macAddDelete {
+        width: 540px;
+        margin: auto;
+        overflow: hidden;
+    }
 
-        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd" id="myForm">
-            <label class="switch">
-                <input type="checkbox" name="enabled" value="ON" onclick="updateState()" checked="">
-                <span class="slider round"></span>
-            </label>
+    .macAddDelete .netOn {
+        float: left;
+        width: 250px;
+        background: #b3d9ff;
+        border: 1px solid #0066ff;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 0 5px 5px 0;
+    }
 
-            <input type="submit" class="button off" value="OFF" name="addFilterMac" id="submit">
-            <input type="hidden" value="http://192.168.0.1/macfilter.htm" name="submit-url">
-        </form>
-      
-        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd" onsubmit="return addClick();">
-            <label class="switch">
-                <input type="checkbox" name="enabled" value="ON" onclick="updateState()">
-                <span class="slider round"></span>
-            </label>
-            <input type="submit" class="button on" value="ON" name="addFilterMac" onclick="">
-            <input type="hidden" value="http://192.168.0.1/macfilter.htm" name="submit-url">
+    .macAddDelete .netOn .title {
+        display: inline-block;
+        font-size: 30px;
+        width: 180px;
+        color: #00264d;
+    }
+
+    .macAddDelete .netOn form {
+        display: inline-block;
+        margin: 0;
+    }
+
+    .macAddDelete .netOn .button {
+        display: inline-block;
+        border: 3px solid;
+        width: 60px;
+        height: 60px;
+        border-radius: 40px;
+        box-shadow: 5px 5px 10px -2px #000;
+        padding: 0px;
+        font-size: 22px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .macAddDelete .netOn .on-button {
+        background: #00ff80;
+        border-color: #009933;
+
+    }
+
+    .macAddDelete .netOn .off-button {
+        background: #ff3333;
+        border-color: #cc3300;
+    }
+
+    .macAddDelete .netOn .on-button:hover,
+    .macAddDelete .netOn .off-button:hover {
+        box-shadow: 0px 0px 5px -2px #000;
+        transition: 0.2s all ease
+    }
+
+    
+    
+    .netOn .btn-group {
+        display: inline-block;
+    }
+
+    .netOn label {
+        display: inline-block;
+        padding: 10px 12px;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: -2px;
+    }
+
+    .netOn input[type="checkbox"] {
+        display: none;
+    }
+
+    .netOn input[type="checkbox"]:checked + label {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+
+</style>
+
+
+<div class="macAddDelete">
+    <div class="netOn">
+        <span class="title">Internet for All</span>
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterDel">
+            <input type="submit" class="button on-button" value="ON" name="deleteAllFilterIp" onclick="return deleteAllClick();">
+            <input type="hidden" value="http://192.168.0.1/ip6filter_m.htm" name="submit-url">
         </form>
     </div>
-  </body>
-</html>
+
+    <div class="netOn">
+        <span class="title">Samsung TV</span>
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
+            <div class="hidden">
+                <input type="checkbox" name="enabled" value="ON" checked>
+
+                <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
+
+                <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.100">
+
+                <select name="protocol">
+                    <option select="" value="0">Both</option>
+                    <option value="1">TCP</option>
+                    <option value="2">UDP</option>
+                </select>
+
+                <input type="text" name="comment" size="20" maxlength="20" value="Samsung TV">
+            </div>
+            <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
+            <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
+        </form>
+    </div>
+
+
+    <div class="netOn">
+        <span class="title">Oppo A3s</span>
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
+            <div class="hidden">
+                <input type="checkbox" name="enabled" value="ON" checked>
+
+                <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
+
+                <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.104">
+
+                <select name="protocol">
+                    <option select="" value="0">Both</option>
+                    <option value="1">TCP</option>
+                    <option value="2">UDP</option>
+                </select>
+
+                <input type="text" name="comment" size="20" maxlength="20" value="Oppo A3s">
+            </div>
+            <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
+            <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
+        </form>
+    </div>
+
+    <div class="netOn">
+        <span class="title">Redmi Y3s</span>
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
+            <div class="hidden">
+                <input type="checkbox" name="enabled" value="ON" checked>
+
+                <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
+
+                <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.105">
+
+                <select name="protocol">
+                    <option select="" value="0">Both</option>
+                    <option value="1">TCP</option>
+                    <option value="2">UDP</option>
+                </select>
+
+                <input type="text" name="comment" size="20" maxlength="20" value="Redmi Y3s">
+            </div>
+            <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
+            <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
+        </form>
+    </div>
+
+    <div class="netOn">
+        <span class="title">Realme GT</span>
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
+            <div class="hidden">
+                <input type="checkbox" name="enabled" value="ON" checked>
+
+                <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
+
+                <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.103">
+
+                <select name="protocol">
+                    <option select="" value="0">Both</option>
+                    <option value="1">TCP</option>
+                    <option value="2">UDP</option>
+                </select>
+
+                <input type="text" name="comment" size="20" maxlength="20" value="Realme GT ME">
+            </div>
+            <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
+            <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
+        </form>
+    </div>
+
+    <div class="netOn">
+        <span class="title">Realme Narzo</span>
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
+            <div class="hidden">
+                <input type="checkbox" name="enabled" value="ON" checked>
+
+                <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
+
+                <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.106">
+
+                <select name="protocol">
+                    <option select="" value="0">Both</option>
+                    <option value="1">TCP</option>
+                    <option value="2">UDP</option>
+                </select>
+
+                <input type="text" name="comment" size="20" maxlength="20" value="Realme Narzo">
+            </div>
+            <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
+            <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
+        </form>
+    </div>
+    
+    <div class="netOn">
+<!--        <span class="title">Internet for</span>-->
+        <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterDel">
+
+            <div class="btn-group">
+                <input type="checkbox" name="select1" id="select1" value="ON">
+                <label for="select1">1</label>
+
+                <input type="checkbox" name="select2" id="select2" value="ON">
+                <label for="select2">2</label>
+
+                <input type="checkbox" name="select3" id="select3" value="ON">
+                <label for="select3">3</label>
+
+                <input type="checkbox" name="select4" id="select4" value="ON">
+                <label for="select4">4</label>
+
+                <input type="checkbox" name="select5" id="select5" value="ON">
+                <label for="select5">5</label>
+            </div>
+
+            
+            
+            <input type="submit" class="button on-button" value="ON" name="deleteSelFilterIp" onclick="return deleteClick();">
+            <input type="hidden" value="http://192.168.0.1/ip6filter_m.htm" name="submit-url">
+        </form>
+    </div>
+    
+    
+    
+</div>
+
+
+<script>
+
+</script>
