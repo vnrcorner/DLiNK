@@ -33,45 +33,6 @@
         </div>
 
         <div class="netOn">
-            <span class="title">Samsung TV</span>
-            <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
-                <div class="hidden">
-                    <input type="checkbox" name="enabled" value="ON" checked>
-                    <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
-                    <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.100">
-                    <select name="protocol">
-                        <option select="" value="0">Both</option>
-                        <option value="1">TCP</option>
-                        <option value="2">UDP</option>
-                    </select>
-                    <input type="text" name="comment" size="20" maxlength="20" value="Samsung TV">
-                </div>
-                <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
-                <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
-            </form>
-        </div>
-
-
-        <div class="netOn">
-            <span class="title">Oppo A3s</span>
-            <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
-                <div class="hidden">
-                    <input type="checkbox" name="enabled" value="ON" checked>
-                    <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
-                    <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.104">
-                    <select name="protocol">
-                        <option select="" value="0">Both</option>
-                        <option value="1">TCP</option>
-                        <option value="2">UDP</option>
-                    </select>
-                    <input type="text" name="comment" size="20" maxlength="20" value="Oppo A3s">
-                </div>
-                <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
-                <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
-            </form>
-        </div>
-
-        <div class="netOn">
             <span class="title">Redmi Y3s</span>
             <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
                 <div class="hidden">
@@ -110,18 +71,37 @@
         </div>
 
         <div class="netOn">
-            <span class="title">Realme Narzo</span>
+            <span class="title">Walton Laptop</span>
             <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
                 <div class="hidden">
                     <input type="checkbox" name="enabled" value="ON" checked>
                     <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
-                    <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.106">
+                    <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.102">
                     <select name="protocol">
                         <option select="" value="0">Both</option>
                         <option value="1">TCP</option>
                         <option value="2">UDP</option>
                     </select>
-                    <input type="text" name="comment" size="20" maxlength="20" value="Realme Narzo">
+                    <input type="text" name="comment" size="20" maxlength="20" value="Walton Laptop">
+                </div>
+                <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
+                <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
+            </form>
+        </div>
+        
+        <div class="netOn">
+            <span class="title">Samsung TV</span>
+            <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
+                <div class="hidden">
+                    <input type="checkbox" name="enabled" value="ON" checked>
+                    <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
+                    <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.100">
+                    <select name="protocol">
+                        <option select="" value="0">Both</option>
+                        <option value="1">TCP</option>
+                        <option value="2">UDP</option>
+                    </select>
+                    <input type="text" name="comment" size="20" maxlength="20" value="Samsung TV">
                 </div>
                 <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
                 <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
@@ -129,7 +109,25 @@
         </div>
 
         <div class="netOn">
-            <!--        <span class="title">Internet for</span>-->
+            <span class="title">Oppo A3s</span>
+            <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterAdd">
+                <div class="hidden">
+                    <input type="checkbox" name="enabled" value="ON" checked>
+                    <input type="radio" name="ip6_enabled" value="0" checked="" onclick="updateState();" disabled="">
+                    <input type="text" name="ip" size="10" maxlength="15" value="192.168.0.104">
+                    <select name="protocol">
+                        <option select="" value="0">Both</option>
+                        <option value="1">TCP</option>
+                        <option value="2">UDP</option>
+                    </select>
+                    <input type="text" name="comment" size="20" maxlength="20" value="Oppo A3s">
+                </div>
+                <input type="submit" class="button off-button" value="OFF" name="addFilterIp" onclick="return addClick();">
+                <input type="hidden" value="http://192.168.0.1/ip6filter.htm" name="submit-url">
+            </form>
+        </div>
+
+        <div class="netOn">
             <form action="http://192.168.0.1/boafrm/formFilter" method="POST" name="formFilterDel">
                 <div class="btn-group">
                     <input type="checkbox" name="select1" id="select1" value="ON">
