@@ -34,7 +34,7 @@ cp .env.example .env
 
 3. Run with PHP server
 ```bash
-php -S localhost:8000
+php -S localhost:8000 -t public
 ```
 
 ## 💻 Tech Stack
