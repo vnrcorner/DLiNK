@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="img/favicon.png" alt="DLink Manager Logo" width="120px" />
+  <img src="public/img/favicon.png" alt="DLink Manager Logo" width="120px" />
   <h1>DLink Manager</h1>
   <p>A sleek and modern web interface to manage your DLink devices on your network</p>
 </div>
